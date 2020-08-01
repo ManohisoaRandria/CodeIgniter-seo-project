@@ -2,7 +2,7 @@
 
 ## ETU000776
 
-* front: [Front-Office](https://duckduckgo.com "The best search engine for privacy").
+* front: [1]: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle> "Hobbit lifestyles"
 * back: [Back-Office](https://duckduckgo.com)
     - login: `sdf`
     - mdp:
