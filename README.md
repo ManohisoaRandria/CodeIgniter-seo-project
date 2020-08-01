@@ -2,7 +2,7 @@
 
 ## ETU000776
 
-    * front:
-    * back:
-        - login:
-        - mdp:
+* front:
+* back:
+    - login:
+    - mdp:
