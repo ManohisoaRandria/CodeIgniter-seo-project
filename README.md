@@ -2,7 +2,7 @@
 
 ## ETU000776
 
-* front: [1]: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle> "Hobbit lifestyles"
-* back: [Back-Office](https://duckduckgo.com)
-    - login: `sdf`
-    - mdp:
+* Front-Office: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle>
+* Back-Office: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle>
+    - login: `back`
+    - mdp: `1234`
