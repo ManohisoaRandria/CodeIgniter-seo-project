@@ -2,7 +2,7 @@
 
 ## ETU000776
 
-* front:
-* back:
-    - login:
+* front: (https://duckduckgo.com)
+* back: (https://duckduckgo.com)
+    - login: `sdf`
     - mdp:
