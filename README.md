@@ -2,7 +2,7 @@
 
 ## ETU000776
 
-* front: [Front-Office](https://duckduckgo.com)
+* front: [Front-Office](https://duckduckgo.com "The best search engine for privacy").
 * back: [Back-Office](https://duckduckgo.com)
     - login: `sdf`
     - mdp:
