@@ -32,10 +32,10 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => '',
-		'password' => '',
-		'database' => '',
-		'DBDriver' => 'MySQLi',
+		'username' => 'postgres',
+		'password' => 'm1234',
+		'database' => 'magazine_db',
+		'DBDriver' => 'postgre',
 		'DBPrefix' => '',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
@@ -48,7 +48,7 @@ class Database extends \CodeIgniter\Database\Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-		'port'     => 3306,
+		'port'     => 5432,
 	];
 
 	/**
