@@ -9,13 +9,13 @@
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
 	<!-- Meta Description -->
-	<meta name="description" content="Suivez les actualités du jour  sur Le Monde, retrouvez tous les articles du journal: International, Science, Economie, Faits Divers, Santé, Sport, Madagascar...">
+	<meta name="description" content="Magazine - le 1ér site d'information -Suivez les actualités du jour  sur Le Monde, retrouvez tous les articles du journal: International, Science, Economie, Faits Divers, Santé, Sport, Madagascar...">
 	<!-- Meta Keyword -->
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Actualité divers du jour -Magazine</title>
+	<title>Magazine - Actualité divers du jour partout dans le monde</title>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!--
 		CSS
@@ -51,18 +51,21 @@
 			<div class="row align-items-center justify-content-between">
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="home">Home</a></li>
-						<li class="menu-has-children"><a href="category.html">Categorie de poste</a>
+						<li class="menu-active"><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li class="menu-has-children"><a href="#">Categorie de poste</a>
 							<ul>
-								<li><a href="image-post.html">Image Post</a></li>
+								<?php for ($i = 0; $i < count($categs); $i++) { ?>
+									<li><a href="<?php echo base_url(); ?>/home?ref=<?= $categs[$i]->getNom() ?>"><?= $categs[$i]->getNom() ?></a></li>
+								<?php } ?>
 							</ul>
 						</li>
 						<li><a href="apropos">A propos</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
 				<div class="navbar-right">
-					<form class="Search">
-						<input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="Search">
+
+					<form class="Search" method="post" action="<?php echo base_url(); ?>/home/test">
+						<input type="text" class="form-control Search-box" value="" name="pseudo" id="Search-box" placeholder="Search">
 						<label for="Search-box" class="Search-box-label">
 							<span class="lnr lnr-magnifier"></span>
 						</label>
@@ -89,11 +92,13 @@
 							<ul class="tags">
 								<li>Bienvenue</li>
 							</ul>
-							
-								<h1 style="color:white;">Le Magazine le plus à jour et le plus complet du monde</h1>
-							
+
+							<h1 style="color:white;">Le Magazine le plus à jour et le plus complet du monde</h1>
+
 							<ul class="meta">
-								<li><h5 style="color: white;">Avec plus d'actualite dans divers domaine</h5></li>
+								<li>
+									<h5 style="color: white;">Avec plus d'actualité dans divers domaine que les autres</h5>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -105,14 +110,15 @@
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
-									<li>Santé</li>
+									<li><?= $recent[0]->getCategorie() ?></li>
 								</ul>
-								
-									<h4>Vaccin contre le Corona Virus</h4>
-								
+								<a href="article/<?= $recent[0]->getTitreUrl() ?>-<?= $recent[0]->getId() ?>">
+									<h4><?= $recent[0]->getTitre() ?></h4>
+								</a>
 								<ul class="meta">
-								<li><h6 style="color: white;">La Russie est pres du but</h6></li>
-								<li><span class="lnr lnr-calendar-full"></span>03 April, 2018</li>
+									<li><a href="#"><span class="lnr lnr-user"></span><?= $recent[0]->getVue() ?></a></li>
+									<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $recent[0]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+									<li><a href="#"><span class="lnr lnr-bubble"></span><?= $recent[0]->getNbComments() ?></a></li>
 								</ul>
 							</div>
 						</div>
@@ -123,15 +129,15 @@
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
-									<li><a href="#">Food Habit</a></li>
+									<li><a href="#"><?= $recent[1]->getCategorie() ?></a></li>
 								</ul>
-								<a href="image-post.html">
-									<h4>A Discount Toner Cartridge Is Better</h4>
+								<a href="article/<?= $recent[1]->getTitreUrl() ?>-<?= $recent[1]->getId() ?>">
+									<h4><?= $recent[1]->getTitre() ?></h4>
 								</a>
 								<ul class="meta">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+									<li><a href="#"><span class="lnr lnr-user"></span><?= $recent[1]->getVue() ?></a></li>
+									<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $recent[1]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+									<li><a href="#"><span class="lnr lnr-bubble"></span><?= $recent[1]->getNbComments() ?></a></li>
 								</ul>
 							</div>
 						</div>
@@ -152,107 +158,34 @@
 					<div class="col-lg-8 post-list">
 						<!-- Start latest-post Area -->
 						<div class="latest-post-wrap">
-							<h4 class="cat-title">Latest News</h4>
-							<div class="single-latest-post row align-items-center">
-								<div class="col-lg-5 post-left">
-									<div class="feature-img relative">
-										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/l1.jpg" alt="">
+							<h4 class="cat-title">Actualités</h4>
+							<?php for ($i = 0; $i < count($recent); $i++) { ?>
+
+								<div class="single-latest-post row align-items-center">
+									<div class="col-lg-5 post-left">
+										<div class="feature-img relative">
+											<div class="overlay overlay-bg"></div>
+											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/l1.jpg" alt="">
+										</div>
+										<ul class="tags">
+											<li><?= $recent[$i]->getCategorie() ?></li>
+										</ul>
 									</div>
-									<ul class="tags">
-										<li><a href="#">Lifestyle</a></li>
-									</ul>
-								</div>
-								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-									</ul>
-									<p class="excert">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-									</p>
-								</div>
-							</div>
-							<div class="single-latest-post row align-items-center">
-								<div class="col-lg-5 post-left">
-									<div class="feature-img relative">
-										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/l2.jpg" alt="">
+									<div class="col-lg-7 post-right">
+										<a href="article/<?= $recent[$i]->getTitreUrl() ?>-<?= $recent[$i]->getId() ?>">
+											<h4><?= $recent[$i]->getTitre() ?></h4>
+										</a>
+										<ul class="meta">
+											<li><a href="#"><span class="lnr lnr-user"></span><?= $recent[$i]->getVue() ?></a></li>
+											<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $recent[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+											<li><a href="#"><span class="lnr lnr-bubble"></span><?= $recent[$i]->getNbComments() ?></a></li>
+										</ul>
+										<p class="excert">
+											<?= $recent[$i]->getDescription() ?>
+										</p>
 									</div>
-									<ul class="tags">
-										<li><a href="#">Science</a></li>
-									</ul>
 								</div>
-								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-									</ul>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-									</p>
-								</div>
-							</div>
-							<div class="single-latest-post row align-items-center">
-								<div class="col-lg-5 post-left">
-									<div class="feature-img relative">
-										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/l3.jpg" alt="">
-									</div>
-									<ul class="tags">
-										<li><a href="#">Travel</a></li>
-									</ul>
-								</div>
-								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-									</ul>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-									</p>
-								</div>
-							</div>
-							<div class="single-latest-post row align-items-center">
-								<div class="col-lg-5 post-left">
-									<div class="feature-img relative">
-										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/l4.jpg" alt="">
-									</div>
-									<ul class="tags">
-										<li><a href="#">Fashion</a></li>
-									</ul>
-								</div>
-								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-									</ul>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-									</p>
-								</div>
-							</div>
+							<?php } ?>
 						</div>
 						<!-- End latest-post Area -->
 
@@ -262,250 +195,126 @@
 							</div> -->
 						<!-- End banner-ads Area -->
 						<!-- Start popular-post Area -->
-						<div class="popular-post-wrap">
-							<h4 class="title">Popular Posts</h4>
-							<div class="feature-post relative">
-								<div class="feature-img relative">
-									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f1.jpg" alt="">
-								</div>
-								<div class="details">
-									<ul class="tags">
-										<li><a href="#">Food Habit</a></li>
-									</ul>
-									<a href="image-post.html">
-										<h3>A Discount Toner Cartridge Is Better Than Ever.</h3>
-									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="row mt-20 medium-gutters">
-								<div class="col-lg-6 single-popular-post">
-									<div class="feature-img-wrap relative">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f2.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Travel</a></li>
-										</ul>
+						<?php if (isset($popular) && count($popular) != 0) { ?>
+							<div class="popular-post-wrap">
+								<h4 class="title">Popular Posts</h4>
+								<div class="feature-post relative">
+									<div class="feature-img relative">
+										<div class="overlay overlay-bg"></div>
+										<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f1.jpg" alt="">
 									</div>
 									<div class="details">
-										<a href="image-post.html">
-											<h4>A Discount Toner Cartridge Is
-												Better Than Ever.</h4>
+										<ul class="tags">
+											<li><a href="#"><?= $popular[0]->getCategorie() ?></a></li>
+										</ul>
+										<a href="article/<?= $popular[0]->getTitreUrl() ?>-<?=$popular[0]->getId() ?>">
+											<h3><?= $popular[0]->getTitre() ?></h3>
 										</a>
 										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+											<li><a href="#"><span class="lnr lnr-user"></span><?= $popular[0]->getVue() ?></a></li>
+											<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $popular[0]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+											<li><a href="#"><span class="lnr lnr-bubble"></span><?= $popular[0]->getNbComments() ?></a></li>
 										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
-										</p>
 									</div>
 								</div>
-								<div class="col-lg-6 single-popular-post">
-									<div class="feature-img-wrap relative">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f3.jpg" alt="">
+
+								<div class="row mt-20 medium-gutters">
+									<?php for ($i = 1; $i < count($popular); $i++) { ?>
+										<div class="col-lg-6 single-popular-post">
+											<div class="feature-img-wrap relative">
+												<div class="feature-img relative">
+													<div class="overlay overlay-bg"></div>
+													<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f2.jpg" alt="">
+												</div>
+												<ul class="tags">
+													<li><a href="#"><?= $popular[$i]->getCategorie() ?></a></li>
+												</ul>
+											</div>
+											<div class="details">
+												<a href="article/<?= $popular[$i]->getTitreUrl() ?>-<?= $popular[$i]->getId() ?>">
+													<h4><?= $popular[$i]->getTitre() ?></h4>
+												</a>
+												<ul class="meta">
+													<li><a href="#"><span class="lnr lnr-user"></span><?= $popular[$i]->getVue() ?></a></li>
+													<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $popular[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+													<li><a href="#"><span class="lnr lnr-bubble"></span><?= $popular[$i]->getNbComments() ?></a></li>
+												</ul>
+												<p class="excert">
+													<?= $popular[$i]->getDescription() ?>
+												</p>
+											</div>
 										</div>
-										<ul class="tags">
-											<li><a href="#">Travel</a></li>
-										</ul>
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h4>A Discount Toner Cartridge Is
-												Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
-										</p>
-									</div>
+									<?php } ?>
 								</div>
 							</div>
-						</div>
+						<?php } ?>
 						<!-- End popular-post Area -->
 						<!-- Start relavent-story-post Area -->
-						<div class="relavent-story-post-wrap mt-30">
-							<h4 class="title">Reportage</h4>
-							<div class="relavent-story-list-wrap">
-								<div class="single-relavent-post row align-items-center">
-									<div class="col-lg-5 post-left">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/r1.jpg" alt="">
+						<?php if (isset($reportage) && count($reportage) != 0) { ?>
+							<div class="relavent-story-post-wrap mt-30">
+								<h4 class="title">Reportage</h4>
+								<div class="relavent-story-list-wrap">
+									<?php for ($i = 0; $i < count($reportage); $i++) { ?>
+										<div class="single-relavent-post row align-items-center">
+											<div class="col-lg-5 post-left">
+												<div class="feature-img relative">
+													<div class="overlay overlay-bg"></div>
+													<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/r2.jpg" alt="">
+												</div>
+												<ul class="tags">
+													<li><a href="#"><?= $reportage[$i]->getCategorie() ?></a></li>
+												</ul>
+											</div>
+											<div class="col-lg-7 post-right">
+												<a href="article/<?= $reportage[$i]->getTitreUrl() ?>-<?= $reportage[$i]->getId()?>">
+													<h4><?= $reportage[$i]->getTitre() ?></h4>
+												</a>
+												<ul class="meta">
+													<li><a href="#"><span class="lnr lnr-user"></span><?= $reportage[$i]->getVue() ?></a></li>
+													<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $reportage[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+													<li><a href="#"><span class="lnr lnr-bubble"></span><?= $reportage[$i]->getNbComments() ?></a></li>
+												</ul>
+												<p class="excert">
+													<?= $reportage[$i]->getDescription() ?>
+												</p>
+											</div>
 										</div>
-										<ul class="tags">
-											<li><a href="#">Lifestyle</a></li>
-										</ul>
-									</div>
-									<div class="col-lg-7 post-right">
-										<a href="image-post.html">
-											<h4>A Discount Toner Cartridge Is
-												Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-										</p>
-									</div>
-								</div>
-								<div class="single-relavent-post row align-items-center">
-									<div class="col-lg-5 post-left">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/r2.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Science</a></li>
-										</ul>
-									</div>
-									<div class="col-lg-7 post-right">
-										<a href="image-post.html">
-											<h4>A Discount Toner Cartridge Is
-												Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-										</p>
-									</div>
-								</div>
-								<div class="single-relavent-post row align-items-center">
-									<div class="col-lg-5 post-left">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/r3.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Travel</a></li>
-										</ul>
-									</div>
-									<div class="col-lg-7 post-right">
-										<a href="image-post.html">
-											<h4>A Discount Toner Cartridge Is
-												Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-										</p>
-									</div>
+									<?php } ?>
 								</div>
 							</div>
-						</div>
+						<?php } ?>
 						<!-- End relavent-story-post Area -->
 					</div>
 					<div class="col-lg-4">
 						<div class="sidebars-area">
-							<div class="single-sidebar-widget editors-pick-widget">
-								<h6 class="title">Les plus lus</h6>
-								<div class="editors-pick-post">
-									
-									<div class="post-lists">
-										<div class="single-post d-flex flex-row">
-											<div class="thumb">
-												<img src="<?php echo base_url(); ?>/public/front/img/e2.jpg" alt="">
-											</div>
-											<div class="detail">
-												<a href="image-post.html">
-													<h6>Help Finding Information
-														Online is so easy</h6>
-												</a>
-												<ul class="meta">
-													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-													<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="single-post d-flex flex-row">
-											<div class="thumb">
-												<img src="<?php echo base_url(); ?>/public/front/img/e3.jpg" alt="">
-											</div>
-											<div class="detail">
-												<a href="image-post.html">
-													<h6>Compatible Inkjet Cartr
-														world famous</h6>
-												</a>
-												<ul class="meta">
-													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-													<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="single-post d-flex flex-row">
-											<div class="thumb">
-												<img src="<?php echo base_url(); ?>/public/front/img/e4.jpg" alt="">
-											</div>
-											<div class="detail">
-												<a href="image-post.html">
-													<h6>5 Tips For Offshore Soft
-														Development </h6>
-												</a>
-												<ul class="meta">
-													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-													<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-												</ul>
-											</div>
+							<?php if (isset($mostview) && count($mostview) != 0) { ?>
+								<div class="single-sidebar-widget editors-pick-widget">
+									<h6 class="title">Les plus lus</h6>
+									<div class="editors-pick-post">
+
+										<div class="post-lists">
+											<?php for ($i = 0; $i < count($mostview); $i++) { ?>
+												<div class="single-post d-flex flex-row">
+													<div class="thumb">
+														<img src="<?php echo base_url(); ?>/public/front/img/e3.jpg" alt="">
+													</div>
+													<div class="detail">
+														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?=$mostview[$i]->getId()?>">
+															<h6><?= $mostview[$i]->getTitre() ?></h6>
+														</a>
+														<ul class="meta">
+															<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $mostview[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+															<li><a href="#"><span class="lnr lnr-bubble"></span><?= $mostview[$i]->getNbComments() ?></a></li>
+														</ul>
+													</div>
+												</div>
+											<?php } ?>
 										</div>
 									</div>
 								</div>
-							</div>
+							<?php } ?>
 							<div class="single-sidebar-widget ads-widget">
 								<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/sidebar-ads.jpg" alt="">
-							</div>
-							<div class="single-sidebar-widget editors-pick-widget">
-								<h6 class="title">Editor’s Pick</h6>
-								<div class="editors-pick-post">
-									<div class="feature-img-wrap relative">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url();?>/public/front/img/e1.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Travel</a></li>
-										</ul>
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h4 class="mt-20">A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
-										</p>
-									</div>
-									
-								</div>
 							</div>
 							<div class="single-sidebar-widget social-network-widget">
 								<h6 class="title">Retrouvez-nous sur les réseau sociaux</h6>

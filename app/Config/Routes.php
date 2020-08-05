@@ -46,6 +46,7 @@ $routes->get('/', 'Home::index');
  * needing to reload it.
  */
 $routes->add('apropos', 'Apropos::index');
+$routes->add('article/(:alphanum)-(:alphanum)', 'Home::oneArticle/$2');
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';

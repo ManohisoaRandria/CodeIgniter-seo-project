@@ -7,15 +7,15 @@
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/fav.png">
 	<!-- Author Meta -->
-	<meta name="author" content="colorlib">
+	<meta name="author" content="ngam">
 	<!-- Meta Description -->
-	<meta name="description" content="">
+	<meta name="description" content="<?= $one[0]->getDescription() ?>">
 	<!-- Meta Keyword -->
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Magazine</title>
+	<title><?= ucfirst($one[0]->getTitre()) ?></title>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!--
 		CSS
@@ -51,12 +51,7 @@
 			<div class="row align-items-center justify-content-between">
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="home">Home</a></li>
-						<li class="menu-has-children"><a href="category.html">Categorie de poste</a>
-							<ul>
-								<li><a href="image-post.html">Image Post</a></li>
-							</ul>
-						</li>
+						<li class="menu-active"><a href="<?php echo base_url(); ?>">Home</a></li>
 						<li><a href="apropos">A propos</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
@@ -82,7 +77,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="news-tracker-wrap">
-							<h6 class="text-white link-nav"><a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span><a href="#">Post Types </a><span class="lnr lnr-arrow-right"></span><a href="image-post.html">Image Post </a></h6>
+							<h6 class="text-white link-nav"><a href="<?php echo base_url(); ?>">Home </a> <span class="lnr lnr-arrow-right"></span><a href="<?php echo base_url(); ?>/article/<?= $one[0]->getTitre() ?>-<?= $one[0]->getId() ?>"><?= $one[0]->getTitre() ?> </a></h6>
 						</div>
 					</div>
 				</div>
@@ -93,7 +88,7 @@
 		<section class="latest-post-area pb-120 ">
 			<div class="container no-padding">
 				<div class="row">
-					<div class="col-lg-8 post-list">
+					<div class="col-lg-12 post-list">
 						<!-- Start single-post Area -->
 						<div class="single-post-wrap">
 							<div class="feature-img-thumb relative">
@@ -102,85 +97,42 @@
 							</div>
 							<div class="content-wrap">
 								<ul class="tags mt-10">
-									<li><a href="#">Food Habit</a></li>
+
+									<li><?= $one[0]->getCategorie() ?></li>
 								</ul>
-								<a href="#">
-									<h3>A Discount Toner Cartridge Is Better Than Ever.</h3>
-								</a>
+									<h1><?= $one[0]->getTitre() ?></h1>
 								<ul class="meta pb-20">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+									<li><span class="lnr lnr-user"></span><?= $one[0]->getVue() ?></li>
+									<li><span class="lnr lnr-calendar-full"></span><?= $one[0]->getDatePublication()->format("d-m-Y H:i") ?></li>
+									<li><span class="lnr lnr-bubble"></span><?= $one[0]->getNbComments() ?></li>
 								</ul>
+								<h2>
+									<?= $one[0]->getDescription() ?>
+								</h2>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+									<?= $one[0]->getContenu() ?>
 								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.
-								</p>
-								<blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</blockquote>
-
-
 								<div class="comment-sec-area">
 									<div class="container">
 										<div class="row flex-column">
-											<h6>05 Comments</h6>
+											<h6><?= count($comments) ?> Comments</h6>
 											<div class="comment-list">
-												<div class="single-comment justify-content-between d-flex">
-													<div class="user justify-content-between d-flex">
-														<div class="thumb">
-															<img src="<?php echo base_url(); ?>/public/front/img/blog/c1.jpg" alt="">
-														</div>
-														<div class="desc">
-															<h5><a href="#">Emilly Blunt</a></h5>
-															<p class="date">December 4, 2017 at 3:12 pm </p>
-															<p class="comment">
-																Never say goodbye till the end comes!
-															</p>
-														</div>
-													</div>
-													<div class="reply-btn">
-														<a href="" class="btn-reply text-uppercase">reply</a>
-													</div>
-												</div>
-											</div>
-											<div class="comment-list left-padding">
-												<div class="single-comment justify-content-between d-flex">
-													<div class="user justify-content-between d-flex">
-														<div class="thumb">
-															<img src="<?php echo base_url(); ?>/public/front/img/blog/c2.jpg" alt="">
-														</div>
-														<div class="desc">
-															<h5><a href="#">Emilly Blunt</a></h5>
-															<p class="date">December 4, 2017 at 3:12 pm </p>
-															<p class="comment">
-																Never say goodbye till the end comes!
-															</p>
+												<?php for ($i = 0; $i < count($comments); $i++) {  ?>
+													<div class="single-comment justify-content-between d-flex">
+														<div class="user justify-content-between d-flex">
+															<div class="thumb">
+																<img src="<?php echo base_url(); ?>/public/front/img/blog/c1.jpg" alt="">
+															</div>
+															<div class="desc">
+																<h5><?= $comments[$i]->getPseudo() ?></h5>
+																<p class="date"><?= $comments[$i]->getDatepublication()->format("d-m-Y H:i") ?></p>
+																<p class="comment">
+																	<?= $comments[$i]->getContenu() ?>
+																</p>
+															</div>
 														</div>
 													</div>
-													<div class="reply-btn">
-														<a href="" class="btn-reply text-uppercase">reply</a>
-													</div>
-												</div>
-											</div>
-											<div class="comment-list">
-												<div class="single-comment justify-content-between d-flex">
-													<div class="user justify-content-between d-flex">
-														<div class="thumb">
-															<img src="<?php echo base_url(); ?>/public/front/img/blog/c3.jpg" alt="">
-														</div>
-														<div class="desc">
-															<h5><a href="#">Emilly Blunt</a></h5>
-															<p class="date">December 4, 2017 at 3:12 pm </p>
-															<p class="comment">
-																Never say goodbye till the end comes!
-															</p>
-														</div>
-													</div>
-													<div class="reply-btn">
-														<a href="" class="btn-reply text-uppercase">reply</a>
-													</div>
-												</div>
+												<?php } ?>
 											</div>
 										</div>
 									</div>
@@ -208,159 +160,6 @@
 							</div>
 						</div>
 						<!-- End single-post Area -->
-					</div>
-					<div class="col-lg-4">
-						<div class="sidebars-area">
-						<div class="single-sidebar-widget editors-pick-widget">
-								<h6 class="title">Editor’s Pick</h6>
-								<div class="editors-pick-post">
-									<div class="feature-img-wrap relative">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url();?>/public/front/img/e1.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Travel</a></li>
-										</ul>
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h4 class="mt-20">A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
-										</p>
-									</div>
-									
-								</div>
-							</div>
-							<div class="single-sidebar-widget editors-pick-widget">
-								<h6 class="title">Les plus lus</h6>
-								<div class="editors-pick-post">
-
-									<div class="post-lists">
-										<div class="single-post d-flex flex-row">
-											<div class="thumb">
-												<img src="<?php echo base_url(); ?>/public/front/img/e2.jpg" alt="">
-											</div>
-											<div class="detail">
-												<a href="image-post.html">
-													<h6>Help Finding Information
-														Online is so easy</h6>
-												</a>
-												<ul class="meta">
-													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-													<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="single-post d-flex flex-row">
-											<div class="thumb">
-												<img src="<?php echo base_url(); ?>/public/front/img/e3.jpg" alt="">
-											</div>
-											<div class="detail">
-												<a href="image-post.html">
-													<h6>Compatible Inkjet Cartr
-														world famous</h6>
-												</a>
-												<ul class="meta">
-													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-													<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="single-post d-flex flex-row">
-											<div class="thumb">
-												<img src="<?php echo base_url(); ?>/public/front/img/e4.jpg" alt="">
-											</div>
-											<div class="detail">
-												<a href="image-post.html">
-													<h6>5 Tips For Offshore Soft
-														Development </h6>
-												</a>
-												<ul class="meta">
-													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-													<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="single-sidebar-widget ads-widget">
-								<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/sidebar-ads.jpg" alt="">
-							</div>
-
-							<div class="single-sidebar-widget most-popular-widget">
-								<h6 class="title">Most Popular</h6>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="<?php echo base_url(); ?>/public/front/img/m1.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>Help Finding Information
-												Online is so easy</h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="<?php echo base_url(); ?>/public/front/img/m2.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>Compatible Inkjet Cartr
-												world famous</h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="<?php echo base_url(); ?>/public/front/img/m3.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>5 Tips For Offshore Soft
-												Development </h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="<?php echo base_url(); ?>/public/front/img/m4.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>5 Tips For Offshore Soft
-												Development </h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
