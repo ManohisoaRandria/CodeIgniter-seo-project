@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost/TP-S6-P6-Web-design-Juillet-2020/';
+	public $baseURL = 'http://localhost/TP-S6-P6-Web-design-Juillet-2020';
 
 	/*
 	|--------------------------------------------------------------------------

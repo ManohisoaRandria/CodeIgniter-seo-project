@@ -112,7 +112,7 @@
 								<ul class="tags">
 									<li><?= $recent[0]->getCategorie() ?></li>
 								</ul>
-								<a href="article/<?= $recent[0]->getTitreUrl() ?>-<?= $recent[0]->getId() ?>">
+								<a href="article/<?= $recent[0]->getTitreUrl() ?>-<?= $recent[0]->getId() ?>.html">
 									<h4><?= $recent[0]->getTitre() ?></h4>
 								</a>
 								<ul class="meta">
@@ -131,7 +131,7 @@
 								<ul class="tags">
 									<li><a href="#"><?= $recent[1]->getCategorie() ?></a></li>
 								</ul>
-								<a href="article/<?= $recent[1]->getTitreUrl() ?>-<?= $recent[1]->getId() ?>">
+								<a href="article/<?= $recent[1]->getTitreUrl() ?>-<?= $recent[1]->getId() ?>.html">
 									<h4><?= $recent[1]->getTitre() ?></h4>
 								</a>
 								<ul class="meta">
@@ -172,7 +172,7 @@
 										</ul>
 									</div>
 									<div class="col-lg-7 post-right">
-										<a href="article/<?= $recent[$i]->getTitreUrl() ?>-<?= $recent[$i]->getId() ?>">
+										<a href="article/<?= $recent[$i]->getTitreUrl() ?>-<?= $recent[$i]->getId() ?>.html">
 											<h4><?= $recent[$i]->getTitre() ?></h4>
 										</a>
 										<ul class="meta">
@@ -207,7 +207,7 @@
 										<ul class="tags">
 											<li><a href="#"><?= $popular[0]->getCategorie() ?></a></li>
 										</ul>
-										<a href="article/<?= $popular[0]->getTitreUrl() ?>-<?=$popular[0]->getId() ?>">
+										<a href="article/<?= $popular[0]->getTitreUrl() ?>-<?=$popular[0]->getId() ?>.html">
 											<h3><?= $popular[0]->getTitre() ?></h3>
 										</a>
 										<ul class="meta">
@@ -231,7 +231,7 @@
 												</ul>
 											</div>
 											<div class="details">
-												<a href="article/<?= $popular[$i]->getTitreUrl() ?>-<?= $popular[$i]->getId() ?>">
+												<a href="article/<?= $popular[$i]->getTitreUrl() ?>-<?= $popular[$i]->getId() ?>.html">
 													<h4><?= $popular[$i]->getTitre() ?></h4>
 												</a>
 												<ul class="meta">
@@ -266,7 +266,7 @@
 												</ul>
 											</div>
 											<div class="col-lg-7 post-right">
-												<a href="article/<?= $reportage[$i]->getTitreUrl() ?>-<?= $reportage[$i]->getId()?>">
+												<a href="article/<?= $reportage[$i]->getTitreUrl() ?>-<?= $reportage[$i]->getId()?>.html">
 													<h4><?= $reportage[$i]->getTitre() ?></h4>
 												</a>
 												<ul class="meta">
@@ -299,7 +299,7 @@
 														<img src="<?php echo base_url(); ?>/public/front/img/e3.jpg" alt="">
 													</div>
 													<div class="detail">
-														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?=$mostview[$i]->getId()?>">
+														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?=$mostview[$i]->getId()?>.html">
 															<h6><?= $mostview[$i]->getTitre() ?></h6>
 														</a>
 														<ul class="meta">
@@ -324,21 +324,21 @@
 											<i class="fa fa-facebook" aria-hidden="true"></i>
 											<p>983 Likes</p>
 										</div>
-										<a href="#">Like our page</a>
+										<a href="https://web.facebook.com/">Like our page</a>
 									</li>
 									<li class="d-flex justify-content-between align-items-center tw">
 										<div class="icons d-flex flex-row align-items-center">
 											<i class="fa fa-twitter" aria-hidden="true"></i>
 											<p>983 Followers</p>
 										</div>
-										<a href="#">Follow Us</a>
+										<a href="https://twitter.com/">Follow Us</a>
 									</li>
 									<li class="d-flex justify-content-between align-items-center yt">
 										<div class="icons d-flex flex-row align-items-center">
 											<i class="fa fa-youtube-play" aria-hidden="true"></i>
 											<p>983 Subscriber</p>
 										</div>
-										<a href="#">Subscribe</a>
+										<a href="https://youtube.com/">Subscribe</a>
 									</li>
 								</ul>
 							</div>

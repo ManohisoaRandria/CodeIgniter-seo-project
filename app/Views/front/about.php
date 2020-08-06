@@ -53,13 +53,8 @@
 			<div class="row align-items-center justify-content-between">
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="home">Home</a></li>
-						<li class="menu-has-children"><a href="category.html">Categorie de poste</a>
-							<ul>
-								<li><a href="image-post.html">Image Post</a></li>
-							</ul>
-						</li>
-						<li><a href="apropos">A propos</a></li>
+						<li class="menu-active"><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
 				<div class="navbar-right">

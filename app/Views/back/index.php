@@ -135,11 +135,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                                <div class="breadcomb-report">
-                                    <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,40 +149,73 @@
     <div class="notika-email-post-area">
         <div class="container">
             <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="contact-form sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
                         <div class="contact-hd sm-form-hd">
                             <h2>Insert Article</h2>
                         </div>
+
                         <div class="contact-form-int">
-                            <div class="form-group">
-                                <div class="form-single nk-int-st widget-form">
-                                    <input type="text" class="form-control" placeholder="First Name" />
+                            <?php //enctype="multipart/form-data"
+                            ?>
+                            <form action="<?php echo base_url(); ?>/back/insertArticle" method="post" id="forminsert">
+                                <div class="form-group">
+                                    <div class="form-single nk-int-st widget-form">
+                                        <textarea name="titre" class="form-control" required placeholder="Titre" form="forminsert"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-single nk-int-st widget-form">
-                                    <input type="text" class="form-control" placeholder="Last Name" />
+                                <div class="form-group">
+                                    <div class="form-single nk-int-st widget-form">
+                                        <textarea name="description" class="form-control" required placeholder="Description" form="forminsert"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-single nk-int-st widget-form">
-                                    <input type="email" class="form-control" placeholder="Email Address" />
+                                <div class="form-group">
+                                    <div class="form-single nk-int-st widget-form">
+                                        <textarea name="contenu" class="form-control" required placeholder="Contenu" form="forminsert"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-single nk-int-st widget-form">
-                                    <input type="number" class="form-control" placeholder="Contact Number" />
+                                <div class="form-group">
+                                    <div class="form-single nk-int-st widget-form">
+                                        <input type="file" name="photo" required id="tof" class="form-control" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-single nk-int-st widget-form">
-                                    <textarea name="message" class="form-control" placeholder="Message"></textarea>
+                                <div class="form-group">
+                                    <div class="form-single nk-int-st widget-form">
+                                        <select name="categorie" required>
+                                            <?php for ($i = 0; $i < count($categs); $i++) { ?>
+                                                <option value="<?= $categs[$i]->getId() ?>"><?= $categs[$i]->getNom() ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="contact-btn">
-                                <button class="button btn">Button</button>
-                            </div>
+                                <div class="contact-btn">
+                                    <button type="submit" class="button btn">inserer</button>
+                                </div>
+                                <!-- <input type="hidden" class="form-control" name="base64" id="base" value=""/> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="contact-form sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                        <div class="contact-hd sm-form-hd">
+                            <h2>Insert Categorie Article</h2>
+                        </div>
+
+                        <div class="contact-form-int">
+                            <?php //enctype="multipart/form-data"
+                            ?>
+                            <form action="<?php echo base_url(); ?>/back/insertCategorieArticle" method="post">
+                                <div class="form-group">
+                                    <div class="form-single nk-int-st widget-form">
+                                        <input type="text" name="nom" required id="tof" class="form-control" placeholder="nom" />
+                                    </div>
+                                </div>
+                                <div class="contact-btn">
+                                    <button type="submit" class="button btn">inserer</button>
+                                </div>
+                                <!-- <input type="hidden" class="form-control" name="base64" id="base" value=""/> -->
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -329,7 +357,29 @@
     </div>
     <!-- End Footer area-->
     <!-- jquery
-		============================================ -->
+        ============================================ -->
+    <script>
+        const form = document.querySelector('#forminsert');
+        // const base=document.querySelector('#base');
+        // form.addEventListener('submit',(e)=>{
+        //     e.preventDefault();
+        //     Main().then(res=>{
+        //         // base.value=res;
+        //         // console.log(res);
+        //         if(base.value!='')form.submit();
+        //     });
+        // });
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+        async function Main() {
+            const file = document.querySelector('#tof').files[0];
+            return await toBase64(file);
+        }
+    </script>
     <script src="<?php echo base_url(); ?>/public/back/js/vendor/jquery-1.12.4.min.js"></script>
     <!-- bootstrap JS
 		============================================ -->

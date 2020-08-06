@@ -52,7 +52,7 @@
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="<?php echo base_url(); ?>">Home</a></li>
-						<li><a href="apropos">A propos</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
 				<div class="navbar-right">
@@ -77,7 +77,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="news-tracker-wrap">
-							<h6 class="text-white link-nav"><a href="<?php echo base_url(); ?>">Home </a> <span class="lnr lnr-arrow-right"></span><a href="<?php echo base_url(); ?>/article/<?= $one[0]->getTitre() ?>-<?= $one[0]->getId() ?>"><?= $one[0]->getTitre() ?> </a></h6>
+							<h6 class="text-white link-nav"><a href="<?php echo base_url(); ?>">Home </a> <span class="lnr lnr-arrow-right"></span><a href="<?php echo base_url(); ?>/article/<?= $one[0]->getTitreUrl() ?>-<?= $one[0]->getId() ?>.html"><?= $one[0]->getTitre() ?> </a></h6>
 						</div>
 					</div>
 				</div>
@@ -140,22 +140,15 @@
 							</div>
 							<div class="comment-form">
 								<h4>Post Comment</h4>
-								<form>
-									<div class="form-group form-inline">
-										<div class="form-group col-lg-6 col-md-12 name">
-											<input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-										</div>
-										<div class="form-group col-lg-6 col-md-12 email">
-											<input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-										</div>
+								<form action="<?= base_Url() ?>/article/comment/<?= $one[0]->getTitreUrl() ?>-<?= $one[0]->getId() ?>.htm" method="post">
+									<div class="form-group">
+										<input type="text" class="form-control" id="subject" name="pseudo" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'" required>
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+										<textarea class="form-control mb-10" rows="5" name="contenu" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required></textarea>
 									</div>
-									<div class="form-group">
-										<textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-									</div>
-									<a href="#" class="primary-btn text-uppercase">Post Comment</a>
+									<input type="hidden" name="url" value="/article/<?= $one[0]->getTitreUrl() ?>-<?= $one[0]->getId() ?>.html">
+									<button type="submit" class="primary-btn text-uppercase">Post Comment</a>
 								</form>
 							</div>
 						</div>

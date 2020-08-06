@@ -46,7 +46,8 @@ $routes->get('/', 'Home::index');
  * needing to reload it.
  */
 $routes->add('apropos', 'Apropos::index');
-$routes->add('article/(:alphanum)-(:alphanum)', 'Home::oneArticle/$2');
+$routes->add('article/(:any)-(:alphanum).html', 'Home::oneArticle/$2');
+$routes->add('article/comment/(:any)-(:alphanum).htm', 'Home::commenting/$2');
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';

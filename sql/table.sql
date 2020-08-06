@@ -54,7 +54,10 @@ select article.id,
     article.vue,
     article.sponsorise,
     article.etat,
-    nbcoms.nb as nbcomments
+     CASE
+    WHEN  nbcoms.nb >= 0 THEN  nbcoms.nb
+    ELSE 0
+  END nbcomments
      from article 
-    join (select article,count(*) as nb from commentaire group by article) as nbcoms on article.id=nbcoms.article
+    left join (select article,count(*) as nb from commentaire group by article) as nbcoms on article.id=nbcoms.article
     join categorieArticle on categorieArticle.id=article.categorie;

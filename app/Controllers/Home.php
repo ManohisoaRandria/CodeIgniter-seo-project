@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use DateTime;
+use DateTimeZone;
+use \Exception;
 class Home extends BaseController
 {
 	protected $db;
@@ -22,7 +25,7 @@ class Home extends BaseController
 		
 		$categs=$userModel->getAllCategorie();
 		$popular=$userModel->getPopular();
-		$reportage=$userModel->getReportage();
+		// $reportage=$userModel->getReportage();
 		$mostview=$userModel->getMostView();
 		// var_dump($users);
 		// $query = $this->db->query('select nextval(\'seq_users\') as id');
@@ -34,7 +37,7 @@ class Home extends BaseController
 		$data['recent']=$recent;
 		$data['popular']=$popular;
 		$data['categs']=$categs;
-		$data['reportage']=$reportage;
+		// $data['reportage']=$reportage;
 		$data['mostview']=$mostview;
 		return view('front/index',$data);
 	}
@@ -51,9 +54,40 @@ class Home extends BaseController
 		$data['comments']=$comments;
 		return view('front/image-post',$data);
 	}
+	public function commenting($id)
+    {
+	
+		$data=$this->request->getPost();
+
+        $date=new DateTime('now',new DateTimeZone('Africa/Nairobi'));
+        $query = $this->db->query('select nextval(\'seq_commentaire\') as id');
+          $id2 = $this->formatNumber($query->getResult()[0]->id.'',4);
+      
+        $data['id']=$id2;
+        $data['datepublication']=$date->format("d-m-Y H:i:s");
+        $data['article']=$id;
+
+      $userModel = model('ArticleModel', true, $this->db);
+       $userModel->addComments($data);
+       return redirect()->to(base_url() . $data['url']);
+	}
+	public function formatNumber(string $seq, int $ordre)
+    {
+      if (strlen(trim($seq)) > $ordre) {
+        throw new Exception("Format impossible !");
+      }
+      $ret = "";
+      for ($i = 0; $i < $ordre - strlen(trim($seq)); $i++) {
+        $ret .= "0";
+      }
+      return $ret . $seq;
+    }
 	public function test()
 	{
-		
+		//  $query = $this->db->query('select nextval(\'seq_users\') as id');
+		// $id = $query->getResult()[0]->id;
+		// $pwd=password_hash('1234',PASSWORD_BCRYPT);
+		// $this->db->simpleQuery("insert into users values('USR000".$id."','Admin','back','".$pwd."')");
 		// var_dump($doubledash);
 		// // $data = $this->request->getPost();
 		//    //var_dump($this->request->getPost());
