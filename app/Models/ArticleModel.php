@@ -26,6 +26,12 @@ class ArticleModel extends Model
         $res = $query->getResult('\App\Entities\Article');
         return $res;
     }
+    public function getAll()
+    {
+        $query = $this->db->query('select * from nombrecoms');
+        $res = $query->getResult('\App\Entities\Article');
+        return $res;
+    }
     public function getPopular()
     {
         $query = $this->db->query('select * from nombrecoms order by nbcomments desc limit 3');
@@ -109,5 +115,22 @@ class ArticleModel extends Model
         }
     }
     //update
+    public function updateArticle($data){
+        $sql="";
+        if(isset($data['photo'])){
+            $sql="update article set titre='".$data['titre']."',
+            description='".$data['description']."',contenu='".$data['contenu']."',photo='".$data['photo']."',categorie='".$data['categorie']."'
+             where id='".$data['id']."'";
+        }else{
+            $sql="update article set titre='".$data['titre']."',
+            description='".$data['description']."',contenu='".$data['contenu']."',categorie='".$data['categorie']."'
+             where id='".$data['id']."'";
+        }
+        if ($this->db->simpleQuery($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     //delete
 }

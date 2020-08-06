@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Widgets | Notika - Notika Admin Template</title>
+    <title>Magazine | Dashboard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -66,7 +66,9 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="#"><img src="<?php echo base_url(); ?>/public/back/img/logo/logo.png" alt="" /></a>
+                        <a href="<?php echo base_url(); ?>/back" style="color: white;">
+                            <h2>MAGAZINE</h2>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -158,7 +160,7 @@
                         <div class="contact-form-int">
                             <?php //enctype="multipart/form-data"
                             ?>
-                            <form action="<?php echo base_url(); ?>/back/insertArticle" method="post" id="forminsert">
+                            <form action="<?php echo base_url(); ?>/back/insertArticle" enctype="multipart/form-data" method="post" id="forminsert">
                                 <div class="form-group">
                                     <div class="form-single nk-int-st widget-form">
                                         <textarea name="titre" class="form-control" required placeholder="Titre" form="forminsert"></textarea>
@@ -217,6 +219,73 @@
                                 <!-- <input type="hidden" class="form-control" name="base64" id="base" value=""/> -->
                             </form>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="contact-form sm-res-mg-t-30 tb-res-mg-t-30 tb-res-mg-t-0">
+                        <div class="contact-hd sm-form-hd">
+                            <h2>Update Article</h2>
+                        </div>
+                        <?php if (!isset($update)) { ?>
+                            <form action="<?php echo base_url(); ?>/back" method="post" id="forminsert">
+                                <div class="row">
+
+                                    <div class=" col-lg-9">
+
+                                        <select name="article" required>
+                                            <?php for ($i = 0; $i < count($allarticle); $i++) { ?>
+                                                <option value="<?= $allarticle[$i]->getId() ?>"><?= substr($allarticle[$i]->getTitre(),0,35) ?>...</option>
+                                            <?php } ?>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button type="submit" class="button btn">update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        <?php } else { ?>
+                            <div class="contact-form-int">
+                                <?php //enctype="multipart/form-data"
+                                ?>
+                                <form action="<?php echo base_url(); ?>/back/updateArticle" enctype="multipart/form-data" method="post" id="formupdate">
+                                    <div class="form-group">
+                                        <div class="form-single nk-int-st widget-form">
+                                            <textarea name="titre" class="form-control" required  form="formupdate" ><?= $update[0]->getTitre() ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-single nk-int-st widget-form">
+                                            <textarea name="description" class="form-control" required placeholder="Description" form="formupdate"><?= $update[0]->getDescription() ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-single nk-int-st widget-form">
+                                            <textarea name="contenu" class="form-control" required placeholder="Contenu" form="formupdate"><?= $update[0]->getContenu() ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-single nk-int-st widget-form">
+                                            <label for="photo" style="color: red;">*ne pas selectionner une photo si vous ne l'updatez pas</label>
+                                            <input type="file" name="photo"  id="tof"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-single nk-int-st widget-form">
+                                            <select name="categorie" required>
+                                                <?php for ($i = 0; $i < count($categs); $i++) { ?>
+                                                <option value="<?= $categs[$i]->getId() ?>" <?php if($update[0]->getCategorie()==$categs[$i]->getNom()) {?>selected="selected"<?php } ?> ><?= $categs[$i]->getNom() ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="contact-btn">
+                                        <button type="submit" class="button btn">inserer</button>
+                                    </div>
+                                    <input type="hidden" class="form-control" name="id" value="<?= $update[0]->getId() ?>"/>
+                                </form>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

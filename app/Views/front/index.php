@@ -86,7 +86,7 @@
 					<div class="col-lg-8 top-post-left">
 						<div class="feature-image-thumb relative">
 							<div class="overlay overlay-bg"></div>
-							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/top-post1.jpg" alt="">
+							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/top-post2.jpg" alt="">
 						</div>
 						<div class="top-post-details">
 							<ul class="tags">
@@ -106,7 +106,7 @@
 						<div class="single-top-post">
 							<div class="feature-image-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/top-post2.jpg" alt="">
+								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[0]->getPhoto() ?>" alt="">
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
@@ -125,7 +125,7 @@
 						<div class="single-top-post mt-10">
 							<div class="feature-image-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/top-post3.jpg" alt="">
+								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[1]->getPhoto() ?>" alt="">
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
@@ -165,7 +165,7 @@
 									<div class="col-lg-5 post-left">
 										<div class="feature-img relative">
 											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/l1.jpg" alt="">
+											<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[$i]->getPhoto() ?>" alt="">
 										</div>
 										<ul class="tags">
 											<li><?= $recent[$i]->getCategorie() ?></li>
@@ -201,7 +201,7 @@
 								<div class="feature-post relative">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f1.jpg" alt="">
+										<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[0]->getPhoto() ?>" alt="">
 									</div>
 									<div class="details">
 										<ul class="tags">
@@ -224,7 +224,7 @@
 											<div class="feature-img-wrap relative">
 												<div class="feature-img relative">
 													<div class="overlay overlay-bg"></div>
-													<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/f2.jpg" alt="">
+													<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[$i]->getPhoto() ?>" alt="">
 												</div>
 												<ul class="tags">
 													<li><a href="#"><?= $popular[$i]->getCategorie() ?></a></li>
@@ -259,7 +259,7 @@
 											<div class="col-lg-5 post-left">
 												<div class="feature-img relative">
 													<div class="overlay overlay-bg"></div>
-													<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/r2.jpg" alt="">
+													<img class="img-fluid" src="<?php echo base_url(); ?><?= $reportage[$i]->getPhoto() ?>" alt="">
 												</div>
 												<ul class="tags">
 													<li><a href="#"><?= $reportage[$i]->getCategorie() ?></a></li>
@@ -296,7 +296,7 @@
 											<?php for ($i = 0; $i < count($mostview); $i++) { ?>
 												<div class="single-post d-flex flex-row">
 													<div class="thumb">
-														<img src="<?php echo base_url(); ?>/public/front/img/e3.jpg" alt="">
+														<img style="width: 100px;height:80px;" src="<?php echo base_url(); ?>/<?= $mostview[$i]->getPhoto() ?>" alt="">
 													</div>
 													<div class="detail">
 														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?=$mostview[$i]->getId()?>.html">
@@ -355,39 +355,24 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 single-footer-widget">
-					<h4>Top Products</h4>
+					<h4>Top Links</h4>
 					<ul>
-						<li><a href="#">Managed Website</a></li>
-						<li><a href="#">Manage Reputation</a></li>
-						<li><a href="#">Power Tools</a></li>
-						<li><a href="#">Marketing Service</a></li>
+						<li><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Quick Links</h4>
+				<div class="col-lg-3 col-md-6 single-footer-widget">
+					<h4>Links</h4>
 					<ul>
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
+						<li><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Features</h4>
+				<div class="col-lg-3 col-md-6 single-footer-widget">
+					<h4>Liens</h4>
 					<ul>
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Resources</h4>
-					<ul>
-						<li><a href="#">Guides</a></li>
-						<li><a href="#">Research</a></li>
-						<li><a href="#">Experts</a></li>
-						<li><a href="#">Agencies</a></li>
+						<li><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6 single-footer-widget">
@@ -409,14 +394,12 @@
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;<script>
 						document.write(new Date().getFullYear());
-					</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					</script> All rights reserved | Magazine
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 				</p>
 				<div class="col-lg-4 col-md-12 footer-social">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-behance"></i></a>
+					<a href="https://web.facebook.com/"><i class="fa fa-facebook"></i></a>
+					<a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
 				</div>
 			</div>
 		</div>

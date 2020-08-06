@@ -20,9 +20,18 @@ class Back extends Controller
     public function index()
     {
         if (isset($_SESSION['user'])) {
+            $dataform=$this->request->getPost();
+            
             $userModel = model('ArticleModel', true, $this->db);
+            if(is_array($dataform)&&isset($dataform['article'])){
+                $one=$userModel->getOne($dataform['article']);
+                $data['update'] = $one;
+            }
+            
             $categs = $userModel->getAllCategorie();
             $data['categs'] = $categs;
+            $allarticle = $userModel->getAll();
+            $data['allarticle'] = $allarticle;
             return view('back/index', $data);
         } else {
             return view('back/login');
@@ -54,48 +63,79 @@ class Back extends Controller
       $userModel = model('ArticleModel', true, $this->db);
        $userModel->addCategorie($data);
        return redirect()->to(base_url() . '/back');
-	}
+    }
+
     public function insertArticle()
     {
-        
-        $data = $this->request->getPost();
-        $date=new DateTime('now',new DateTimeZone('Africa/Nairobi'));
-        $query = $this->db->query('select nextval(\'seq_article\') as id');
-          $id = $this->formatNumber($query->getResult()[0]->id.'',4);
-      
-        $data['id']=$id;
-        $data['datepublication']=$date->format("d-m-Y H:i:s");
-        $data['sponsorise']=0;
-        $data['etat']=1;
-        $data['nbcomments']=0;
-        $data['vue']=0;
-    //   var_dump($data);
-      $userModel = model('ArticleModel', true, $this->db);
-       $userModel->addArticle($data);
-       return redirect()->to(base_url() . '/back');
-        // $validated = $this->validate([
-        //     'photo' => [
-        //         'uploaded[photo]',
-        //         'mime_in[photo,image/jpg,image/jpeg,image/gif,image/png]',
-        //         'max_size[photo,4096]',
-        //     ],
-        // ]);
-        // if ($validated) {
-        //     $client = \Config\Services::curlrequest();
-        //     $photo = $this->request->getFile('photo');
-        //    // var_dump($data['base64']);
-        //     $url = 'https://image-host-ngam.herokuapp.com/uploadLink';
+   
+        $validated = $this->validate([
+            'photo' => [
+                'uploaded[photo]',
+                'mime_in[photo,image/jpg,image/jpeg,image/gif,image/png]',
+                'max_size[photo,4096]',
+            ],
+        ]);
+        if ($validated) {
            
-        //     // // Collection object
-        //     $data2 = [
-        //         'img' =>$data['base64']
-        //     ];
-        //     $response= $client->request('POST', $url,['json' => $data2]);
-        //     var_dump($response);
-        //     // var_dump(write_file(base_url() . '/public/back/uploads', $photo, 'r+'));
-        //     // var_dump($photo->store(base_url(). './public/back/uploads'));
-        //     // echo ROOTPATH;
-        // }
+            $photo = $this->request->getFile('photo');
+            if($photo->isValid()&& !$photo->hasMoved()){
+                $data = $this->request->getPost();
+                $date=new DateTime('now',new DateTimeZone('Africa/Nairobi'));
+                $query = $this->db->query('select nextval(\'seq_article\') as id');
+                  $id = $this->formatNumber($query->getResult()[0]->id.'',4);
+            
+                $data['id']=$id;
+                $data['datepublication']=$date->format("d-m-Y H:i:s");
+                $data['sponsorise']=0;
+                $data['etat']=1;
+                $data['nbcomments']=0;
+                $name=$photo->getRandomName();
+                $data['photo']='public/back/uploads/'.$name;
+                $data['vue']=0;
+                
+                $photo->move('./public/back/uploads',$name);
+                $userModel = model('ArticleModel', true, $this->db);
+                $userModel->addArticle($data);
+                return redirect()->to(base_url() . '/back');
+               
+            }
+        }
+    }
+    public function updateArticle()
+    {
+        
+        $validated = $this->validate([
+            'photo' => [
+                'uploaded[photo]',
+                'mime_in[photo,image/jpg,image/jpeg,image/gif,image/png]',
+                'max_size[photo,4096]',
+            ],
+        ]);
+        if ($validated) {
+           
+            $photo = $this->request->getFile('photo');
+            if($photo->isValid()&& !$photo->hasMoved()){
+                $data = $this->request->getPost();
+                $date=new DateTime('now',new DateTimeZone('Africa/Nairobi'));
+                $query = $this->db->query('select nextval(\'seq_article\') as id');
+                  $id = $this->formatNumber($query->getResult()[0]->id.'',4);
+            
+              
+                $name=$photo->getRandomName();
+                $data['photo']='public/back/uploads/'.$name;
+                
+                $photo->move('./public/back/uploads',$name);
+                $userModel = model('ArticleModel', true, $this->db);
+                $userModel->updateArticle($data);
+                return redirect()->to(base_url() . '/back');
+               
+            }
+        }else{
+            $data = $this->request->getPost();
+            $userModel = model('ArticleModel', true, $this->db);
+            $userModel->updateArticle($data);
+            return redirect()->to(base_url() . '/back');
+        }
     }
     public function logout()
     {
@@ -113,7 +153,13 @@ class Back extends Controller
             if ($test) {
                 $_SESSION['user'] = 'true';
                 return redirect()->to(base_url() . '/back');
+            }else{
+                $data2['error']='verifier votre pseudo et mot de passe';
+                return view('back/login',$data2);
             }
+        }else{
+            $data2['error']='verifier votre pseudo et mot de passe';
+            return view('back/login',$data2);
         }
         //    return view('back/login');
     }

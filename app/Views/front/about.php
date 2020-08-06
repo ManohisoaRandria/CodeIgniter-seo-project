@@ -79,8 +79,8 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="hero-nav-area">
-							<h1 class="text-white">About Us</h1>
-							<p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span><a href="about.php">About Us </a></p>
+							<h1 class="text-white">Apropos de nous</h1>
+							<h4><p class="text-white link-nav"><a href="#">Home </a> <span class="lnr lnr-arrow-right"></span><a href="#">A propos</a></p></h4>
 						</div>
 					</div>
 				</div>
@@ -329,39 +329,24 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 single-footer-widget">
-					<h4>Top Products</h4>
+					<h4>Top Links</h4>
 					<ul>
-						<li><a href="#">Managed Website</a></li>
-						<li><a href="#">Manage Reputation</a></li>
-						<li><a href="#">Power Tools</a></li>
-						<li><a href="#">Marketing Service</a></li>
+						<li><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Quick Links</h4>
+				<div class="col-lg-3 col-md-6 single-footer-widget">
+					<h4>Links</h4>
 					<ul>
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
+						<li><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Features</h4>
+				<div class="col-lg-3 col-md-6 single-footer-widget">
+					<h4>Liens</h4>
 					<ul>
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Resources</h4>
-					<ul>
-						<li><a href="#">Guides</a></li>
-						<li><a href="#">Research</a></li>
-						<li><a href="#">Experts</a></li>
-						<li><a href="#">Agencies</a></li>
+						<li><a href="<?php echo base_url(); ?>">Home</a></li>
+						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6 single-footer-widget">
@@ -383,14 +368,12 @@
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;<script>
 						document.write(new Date().getFullYear());
-					</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					</script> All rights reserved | Magazine
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 				</p>
 				<div class="col-lg-4 col-md-12 footer-social">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-behance"></i></a>
+					<a href="https://web.facebook.com/"><i class="fa fa-facebook"></i></a>
+					<a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
 				</div>
 			</div>
 		</div>
