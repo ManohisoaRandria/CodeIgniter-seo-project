@@ -31,10 +31,10 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'postgres',
-		'password' => 'm1234',
-		'database' => 'magazine_db',
+		'hostname' => 'ec2-54-217-206-236.eu-west-1.compute.amazonaws.com',
+		'username' => 'ptiklhajqduogh',
+		'password' => '7830731ae55f95705d1b8efe9b52a506966b0f363a25910198661ec75609580c',
+		'database' => 'dd4v388hfvgjl6',
 		'DBDriver' => 'postgre',
 		'DBPrefix' => '',
 		'pConnect' => false,
