@@ -12,7 +12,7 @@
 	<!-- Meta Description -->
 	<meta name="description" content="<?= $one[0]->getDescription() ?>">
 	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
+	<meta name="keywords" content="Magazine,madagascar,monde,actualité,International, Science, Economie, Faits Divers, Santé, Sport">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->

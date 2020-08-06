@@ -7,12 +7,12 @@
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/fav.png">
 	<!-- Author Meta -->
-	<meta name="author" content="colorlib">
+	<meta name="author" content="ngam">
 	<meta name="robots" content="index, follow, noarchive">
 	<!-- Meta Description -->
 	<meta name="description" content="">
 	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
+	<meta name="keywords" content="Magazine,madagascar,monde,actualité,International, Science, Economie, Faits Divers, Santé, Sport">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
