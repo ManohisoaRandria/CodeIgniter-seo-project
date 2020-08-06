@@ -13,15 +13,18 @@ class Home extends BaseController
 		$this->db = \Config\Database::connect('default', true);
 		helper(['url', 'form']); 
 	}
-	public function index()
+	public function index($id=null)
 	{
 		$userModel = model('ArticleModel', true, $this->db);
 		$recent=array();
-		if($this->request->getGet('ref')!=null){
-			$recent= $userModel->getByCategorie($this->request->getGet('ref'));
-		}else{
-			$recent= $userModel->getRecent();
+		$getbcat=array();
+		if($id!=null){
+			$getbcat= $userModel->getByCategorie($id);
+			$data['getbcat']=$getbcat;
+			$data['h1']=ucfirst($id);
 		}
+			$recent= $userModel->getRecent();
+		
 		
 		$categs=$userModel->getAllCategorie();
 		$popular=$userModel->getPopular();

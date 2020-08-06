@@ -8,6 +8,7 @@
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
+	<meta name="robots" content="index, follow, noarchive">
 	<!-- Meta Description -->
 	<meta name="description" content="">
 	<!-- Meta Keyword -->

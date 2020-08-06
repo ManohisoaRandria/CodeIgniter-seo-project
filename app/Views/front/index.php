@@ -8,15 +8,19 @@
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
+	<meta name="robots" content="index, follow, noarchive">
 	<!-- Meta Description -->
-	<meta name="description" content="Magazine - le 1ér site d'information -Suivez les actualités du jour  sur Le Monde, retrouvez tous les articles du journal: International, Science, Economie, Faits Divers, Santé, Sport, Madagascar...">
+	<meta name="description" content="<?php if(!isset($h1)) {?>Magazine - le 1ér site d'information -Suivez les
+		 actualités du jour  sur Le Monde, retrouvez tous les articles du journal:
+		  International, Science, Economie, Faits Divers, Santé, Sport, Madagascar... 
+		   <?php }else{ echo "Toute l’actualité sur le sujet ".$h1.". Consultez l’ensemble des articles, reportages, directs, photos et vidéos de la rubrique ";} ?>">
 	<!-- Meta Keyword -->
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>/public/front/img/logoico.ico">
 	<!-- Site Title -->
-	<title>Magazine - Actualité divers du jour partout dans le monde</title>
+	<title><?php if(!isset($h1)) {?>Magazine - Actualité et Info divers à Madagascar et partout dans le monde <?php }else{ echo $h1." - Actualité et Info divers à Madagascar et partout dans le monde";} ?></title>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!--
 		CSS
@@ -39,7 +43,7 @@
 				<div class="row justify-content-between align-items-center">
 					<div class="col-lg-4 col-md-4 col-sm-12 logo-left no-padding">
 						<a href="home">
-							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/logo.png" alt="">
+							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/logo.png" alt="Magazine logo">
 						</a>
 					</div>
 					<div class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
@@ -56,7 +60,7 @@
 						<li class="menu-has-children"><a href="#">Categorie de poste</a>
 							<ul>
 								<?php for ($i = 0; $i < count($categs); $i++) { ?>
-									<li><a href="<?php echo base_url(); ?>/home?ref=<?= $categs[$i]->getNom() ?>"><?= $categs[$i]->getNom() ?></a></li>
+									<li><a href="<?php echo base_url(); ?>/home/categorie/<?= $categs[$i]->getNom() ?>"><?= $categs[$i]->getNom() ?></a></li>
 								<?php } ?>
 							</ul>
 						</li>
@@ -87,18 +91,18 @@
 					<div class="col-lg-8 top-post-left">
 						<div class="feature-image-thumb relative">
 							<div class="overlay overlay-bg"></div>
-							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/top-post2.jpg" alt="">
+							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/top-post2.jpg" alt="Magazine - actualité - accueil">
 						</div>
 						<div class="top-post-details">
 							<ul class="tags">
 								<li>Bienvenue</li>
 							</ul>
 
-							<h1 style="color:white;">Le Magazine le plus à jour et le plus complet du monde</h1>
+								<h1 style="color:white;"><?php if(!isset($h1)) {?>Le Magazine le plus à jour et le plus complet du monde<?php }else{ echo $h1;} ?></h1>
 
 							<ul class="meta">
 								<li>
-									<h5 style="color: white;">Avec plus d'actualité dans divers domaine que les autres</h5>
+									<h5 style="color: white;"><?php if(!isset($h1)) {?>Avec plus d'actualité et d'info dans divers domaine à Madagascar et partout dans la Monde<?php }else{ echo "Ne ratez-pas les Actualités sur le sujet ".$h1." à Madagascar et partout dans le monde";} ?></h5>
 								</li>
 							</ul>
 						</div>
@@ -107,7 +111,7 @@
 						<div class="single-top-post">
 							<div class="feature-image-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[0]->getPhoto() ?>" alt="">
+								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[0]->getPhoto() ?>" alt="<?= $recent[0]->getTitre() ?>">
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
@@ -126,7 +130,7 @@
 						<div class="single-top-post mt-10">
 							<div class="feature-image-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[1]->getPhoto() ?>" alt="">
+								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[1]->getPhoto() ?>" alt="<?= $recent[1]->getTitre() ?>">
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
@@ -145,7 +149,8 @@
 					</div>
 					<div class="col-lg-12">
 						<div class="news-tracker-wrap">
-							<h6><span><strong>Magazine:</strong></span> regoupe les <strong>actualités </strong> récents dans tout les domaine pour vous <strong> mettre à jours</strong></h6>
+							<h6><?php if(!isset($h1)) {?><span><strong>Magazine:</strong></span> regoupe les <strong>actualités </strong> et les <strong>infos </strong> dans tout les domaine pour vous <strong> mettre à jours</strong>
+								<?php }else{ echo "<span><strong>Magazine:</strong></span> vous offre les Actualités sur le sujet:<strong> ".$h1."  </strong>";} ?></h6>
 						</div>
 					</div>
 				</div>
@@ -159,33 +164,65 @@
 					<div class="col-lg-8 post-list">
 						<!-- Start latest-post Area -->
 						<div class="latest-post-wrap">
-							<h4 class="cat-title">Actualités</h4>
-							<?php for ($i = 0; $i < count($recent); $i++) { ?>
+							
+							<?php if (!isset($getbcat)) { ?>
+								<h4 class="cat-title">Actualités</h4>
+								<?php for ($i = 0; $i < count($recent); $i++) { ?>
 
-								<div class="single-latest-post row align-items-center">
-									<div class="col-lg-5 post-left">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[$i]->getPhoto() ?>" alt="">
+									<div class="single-latest-post row align-items-center">
+										<div class="col-lg-5 post-left">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[$i]->getPhoto() ?>" alt="<?= $recent[$i]->getTitre() ?>">
+											</div>
+											<ul class="tags">
+												<li><?= $recent[$i]->getCategorie() ?></li>
+											</ul>
 										</div>
-										<ul class="tags">
-											<li><?= $recent[$i]->getCategorie() ?></li>
-										</ul>
+										<div class="col-lg-7 post-right">
+											<a href="<?php echo base_url(); ?>/article/<?= $recent[$i]->getTitreUrl() ?>-<?= $recent[$i]->getId() ?>.html">
+												<h4><?= $recent[$i]->getTitre() ?></h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span><?= $recent[$i]->getVue() ?></a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $recent[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span><?= $recent[$i]->getNbComments() ?></a></li>
+											</ul>
+											<p class="excert">
+												<?= $recent[$i]->getDescription() ?>
+											</p>
+										</div>
 									</div>
-									<div class="col-lg-7 post-right">
-										<a href="article/<?= $recent[$i]->getTitreUrl() ?>-<?= $recent[$i]->getId() ?>.html">
-											<h4><?= $recent[$i]->getTitre() ?></h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span><?= $recent[$i]->getVue() ?></a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $recent[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span><?= $recent[$i]->getNbComments() ?></a></li>
-										</ul>
-										<p class="excert">
-											<?= $recent[$i]->getDescription() ?>
-										</p>
+								<?php } ?>
+							<?php } else { ?>
+								<h4 class="cat-title">Actualités <?php if(count($getbcat)!=0) echo $getbcat[0]->getCategorie(); ?></h4>
+								<?php for ($i = 0; $i < count($getbcat); $i++) { ?>
+
+									<div class="single-latest-post row align-items-center">
+										<div class="col-lg-5 post-left">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $getbcat[$i]->getPhoto() ?>" alt="<?= $getbcat[$i]->getTitre() ?>">
+											</div>
+											<ul class="tags">
+												<li><?= $getbcat[$i]->getCategorie() ?></li>
+											</ul>
+										</div>
+										<div class="col-lg-7 post-right">
+											<a href="<?php echo base_url(); ?>/article/<?= $getbcat[$i]->getTitreUrl() ?>-<?= $getbcat[$i]->getId() ?>.html">
+												<h4><?= $getbcat[$i]->getTitre() ?></h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span><?= $getbcat[$i]->getVue() ?></a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span><?= $getbcat[$i]->getDatePublication()->format("d-m-Y H:i") ?></a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span><?= $getbcat[$i]->getNbComments() ?></a></li>
+											</ul>
+											<p class="excert">
+												<?= $getbcat[$i]->getDescription() ?>
+											</p>
+										</div>
 									</div>
-								</div>
+								<?php } ?>
 							<?php } ?>
 						</div>
 						<!-- End latest-post Area -->
@@ -202,13 +239,13 @@
 								<div class="feature-post relative">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[0]->getPhoto() ?>" alt="">
+										<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[0]->getPhoto() ?>" alt="<?= $popular[0]->getTitre() ?>">
 									</div>
 									<div class="details">
 										<ul class="tags">
 											<li><a href="#"><?= $popular[0]->getCategorie() ?></a></li>
 										</ul>
-										<a href="article/<?= $popular[0]->getTitreUrl() ?>-<?=$popular[0]->getId() ?>.html">
+										<a href="article/<?= $popular[0]->getTitreUrl() ?>-<?= $popular[0]->getId() ?>.html">
 											<h3><?= $popular[0]->getTitre() ?></h3>
 										</a>
 										<ul class="meta">
@@ -225,7 +262,7 @@
 											<div class="feature-img-wrap relative">
 												<div class="feature-img relative">
 													<div class="overlay overlay-bg"></div>
-													<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[$i]->getPhoto() ?>" alt="">
+													<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[$i]->getPhoto() ?>" alt="<?= $popular[$i]->getTitre() ?>">
 												</div>
 												<ul class="tags">
 													<li><a href="#"><?= $popular[$i]->getCategorie() ?></a></li>
@@ -260,14 +297,14 @@
 											<div class="col-lg-5 post-left">
 												<div class="feature-img relative">
 													<div class="overlay overlay-bg"></div>
-													<img class="img-fluid" src="<?php echo base_url(); ?><?= $reportage[$i]->getPhoto() ?>" alt="">
+													<img class="img-fluid" src="<?php echo base_url(); ?><?= $reportage[$i]->getPhoto() ?>" alt="<?= $reportage[$i]->getTitre() ?>">
 												</div>
 												<ul class="tags">
 													<li><a href="#"><?= $reportage[$i]->getCategorie() ?></a></li>
 												</ul>
 											</div>
 											<div class="col-lg-7 post-right">
-												<a href="article/<?= $reportage[$i]->getTitreUrl() ?>-<?= $reportage[$i]->getId()?>.html">
+												<a href="article/<?= $reportage[$i]->getTitreUrl() ?>-<?= $reportage[$i]->getId() ?>.html">
 													<h4><?= $reportage[$i]->getTitre() ?></h4>
 												</a>
 												<ul class="meta">
@@ -297,10 +334,10 @@
 											<?php for ($i = 0; $i < count($mostview); $i++) { ?>
 												<div class="single-post d-flex flex-row">
 													<div class="thumb">
-														<img style="width: 100px;height:80px;" src="<?php echo base_url(); ?>/<?= $mostview[$i]->getPhoto() ?>" alt="">
+														<img style="width: 100px;height:80px;" src="<?php echo base_url(); ?>/<?= $mostview[$i]->getPhoto() ?>" alt="<?= $mostview[$i]->getTitre() ?>">
 													</div>
 													<div class="detail">
-														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?=$mostview[$i]->getId()?>.html">
+														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?= $mostview[$i]->getId() ?>.html">
 															<h6><?= $mostview[$i]->getTitre() ?></h6>
 														</a>
 														<ul class="meta">
@@ -314,9 +351,7 @@
 									</div>
 								</div>
 							<?php } ?>
-							<div class="single-sidebar-widget ads-widget">
-								<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/sidebar-ads.jpg" alt="">
-							</div>
+
 							<div class="single-sidebar-widget social-network-widget">
 								<h6 class="title">Retrouvez-nous sur les réseau sociaux</h6>
 								<ul class="social-list">
@@ -379,14 +414,14 @@
 				<div class="col-lg-3 col-md-6 single-footer-widget">
 					<h4>Instragram Feed</h4>
 					<ul class="instafeed d-flex flex-wrap">
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i1.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i2.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i3.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i4.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i5.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i6.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i7.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i8.jpg" alt=""></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i1.jpg" alt="insta1"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i2.jpg" alt="insta2"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i3.jpg" alt="insta3"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i4.jpg" alt="insta4"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i5.jpg" alt="insta5"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i6.jpg" alt="insta6"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i7.jpg" alt="insta7"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i8.jpg" alt="insta8"></li>
 					</ul>
 				</div>
 			</div>

@@ -5,9 +5,10 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/fav.png">
+	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/logoico.ico">
 	<!-- Author Meta -->
 	<meta name="author" content="ngam">
+	<meta name="robots" content="index, follow, noarchive">
 	<!-- Meta Description -->
 	<meta name="description" content="<?= $one[0]->getDescription() ?>">
 	<!-- Meta Keyword -->
@@ -38,7 +39,7 @@
 				<div class="row justify-content-between align-items-center">
 					<div class="col-lg-4 col-md-4 col-sm-12 logo-left no-padding">
 						<a href="index.html">
-							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/logo.png" alt="">
+							<img class="img-fluid" src="<?php echo base_url(); ?>/public/front/img/logo.png" alt="Magazine -logo">
 						</a>
 					</div>
 					<div class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
@@ -93,14 +94,14 @@
 						<div class="single-post-wrap">
 							<div class="feature-img-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $one[0]->getPhoto() ?>" alt="">
+								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $one[0]->getPhoto() ?>" alt="<?= $one[0]->getTitre() ?>">
 							</div>
 							<div class="content-wrap">
 								<ul class="tags mt-10">
 
 									<li><?= $one[0]->getCategorie() ?></li>
 								</ul>
-									<h1><?= $one[0]->getTitre() ?></h1>
+								<h1><?= $one[0]->getTitre() ?></h1>
 								<ul class="meta pb-20">
 									<li><span class="lnr lnr-user"></span><?= $one[0]->getVue() ?></li>
 									<li><span class="lnr lnr-calendar-full"></span><?= $one[0]->getDatePublication()->format("d-m-Y H:i") ?></li>
@@ -121,7 +122,7 @@
 													<div class="single-comment justify-content-between d-flex">
 														<div class="user justify-content-between d-flex">
 															<div class="thumb">
-																<img src="<?php echo base_url(); ?>/public/front/img/blog/c1.jpg" alt="">
+																<img src="<?php echo base_url(); ?>/public/front/img/blog/c1.jpg" alt="comments">
 															</div>
 															<div class="desc">
 																<h5><?= $comments[$i]->getPseudo() ?></h5>
@@ -188,14 +189,14 @@
 				<div class="col-lg-3 col-md-6 single-footer-widget">
 					<h4>Instragram Feed</h4>
 					<ul class="instafeed d-flex flex-wrap">
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i1.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i2.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i3.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i4.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i5.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i6.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i7.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i8.jpg" alt=""></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i1.jpg" alt="insta1"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i2.jpg" alt="insta2"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i3.jpg" alt="insta3"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i4.jpg" alt="insta4"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i5.jpg" alt="insta5"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i6.jpg" alt="insta6"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i7.jpg" alt="insta7"></li>
+						<li><img src="<?php echo base_url(); ?>/public/front/img/i8.jpg" alt="insta8"></li>
 					</ul>
 				</div>
 			</div>

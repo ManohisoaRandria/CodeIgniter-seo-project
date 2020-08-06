@@ -48,6 +48,7 @@ $routes->get('/', 'Home::index');
 $routes->add('apropos', 'Apropos::index');
 $routes->add('article/(:any)-(:alphanum).html', 'Home::oneArticle/$2');
 $routes->add('article/comment/(:any)-(:alphanum).htm', 'Home::commenting/$2');
+$routes->add('home/categorie/(:any)', 'Home::index/$1');
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
