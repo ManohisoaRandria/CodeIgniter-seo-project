@@ -35,7 +35,7 @@ class Database extends \CodeIgniter\Database\Config
 		'username' => 'ptiklhajqduogh',
 		'password' => '7830731ae55f95705d1b8efe9b52a506966b0f363a25910198661ec75609580c',
 		'database' => 'dd4v388hfvgjl6',
-		'DBDriver' => 'postgre',
+		'DBDriver' => 'postgres',
 		'DBPrefix' => '',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
