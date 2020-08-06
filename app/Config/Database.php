@@ -30,7 +30,7 @@ class Database extends \CodeIgniter\Database\Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => '',
+		'DSN'      => 'postgres://ptiklhajqduogh:7830731ae55f95705d1b8efe9b52a506966b0f363a25910198661ec75609580c@ec2-54-217-206-236.eu-west-1.compute.amazonaws.com:5432/dd4v388hfvgjl6',
 		'hostname' => 'ec2-54-217-206-236.eu-west-1.compute.amazonaws.com',
 		'username' => 'ptiklhajqduogh',
 		'password' => '7830731ae55f95705d1b8efe9b52a506966b0f363a25910198661ec75609580c',
