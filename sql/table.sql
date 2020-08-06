@@ -7,6 +7,7 @@ CREATE TABLE users (--USR
     pseudo VARCHAR(50),
     mdp VARCHAR(225)
 );
+insert into users values('USR000'||nextval('seq_users'),'Admin','back','$2y$10$fTq48.sdSKOGRVx9etXnb.Y4hboYAbd1CKQIyJBvkzJht33coPt/e');
 CREATE SEQUENCE seq_categoriearticle;
 CREATE TABLE categorieArticle (
     id VARCHAR(50) PRIMARY KEY,
@@ -26,9 +27,6 @@ CREATE TABLE article (
     sponsorise integer,
     etat integer
 );
-insert into categorieArticle values('cat1','cat1',1);
-insert into article values('ART0001','test','wdfsdfzaz','sdfksdjlfk','haha/dfs.jpg','cat1','2020-02-02',1,1,1);
-insert into article values('ART0002','test','wdfsdfzaz','sdfksdjlfk','haha/dfs.jpg','cat1','2020-02-02',1,1,1);
 CREATE SEQUENCE seq_commentaire;
 CREATE TABLE commentaire (
     id VARCHAR(50) PRIMARY KEY,
@@ -37,11 +35,6 @@ CREATE TABLE commentaire (
     article VARCHAR(50) NOT NULL references article,
     datePublication timestamp NOT NULL
 );
-insert into commentaire values('com1','qsdqsd','qsdqsdq','ART0001','2020-02-02');
-insert into commentaire values('com2','qsdqsd','qsdqsdq','ART0001','2020-02-02');
-insert into commentaire values('com3','qsdqsd','qsdqsdq','ART0001','2020-02-02');
-insert into commentaire values('com4','qsdqsd','qsdqsdq','ART0002','2020-02-02');
-insert into commentaire values('com5','qsdqsd','qsdqsdq','ART0002','2020-02-02');
 
 create view nombrecoms as
 select article.id,

@@ -89,8 +89,8 @@ class ArticleModel extends Model
     //insert
     public function addArticle($data){
 
-        if ($this->db->simpleQuery("insert into article values('".$data['id']."','".$data['titre']."',
-        '".$data['description']."','".$data['contenu']."','".$data['photo']."','".$data['categorie']."','".$data['datepublication']."',
+        if ($this->db->simpleQuery("insert into article values('".$data['id']."',".$this->db->escape($data['titre']).",
+        ".$this->db->escape($data['description']).",".$this->db->escape($data['contenu']).",'".$data['photo']."','".$data['categorie']."','".$data['datepublication']."',
         ".$data['vue'].",".$data['sponsorise'].",".$data['etat'].")")) {
             return true;
         } else {
@@ -99,7 +99,7 @@ class ArticleModel extends Model
     }
     public function addCategorie($data){
 
-        if ($this->db->simpleQuery("insert into categorieArticle values('".$data['id']."','".$data['nom']."',
+        if ($this->db->simpleQuery("insert into categorieArticle values('".$data['id']."',".$this->db->escape($data['nom']).",
         '".$data['etat']."')")) {
             return true;
         } else {
@@ -107,8 +107,8 @@ class ArticleModel extends Model
         }
     }
     public function addComments($data){
-        if ($this->db->simpleQuery("insert into commentaire values('".$data['id']."','".$data['pseudo']."',
-        '".$data['contenu']."','".$data['article']."','".$data['datepublication']."')")) {
+        if ($this->db->simpleQuery("insert into commentaire values('".$data['id']."',".$this->db->escape($data['pseudo']).",
+        ".$this->db->escape($data['contenu']).",'".$data['article']."','".$data['datepublication']."')")) {
             return true;
         } else {
             return false;
@@ -118,12 +118,12 @@ class ArticleModel extends Model
     public function updateArticle($data){
         $sql="";
         if(isset($data['photo'])){
-            $sql="update article set titre='".$data['titre']."',
-            description='".$data['description']."',contenu='".$data['contenu']."',photo='".$data['photo']."',categorie='".$data['categorie']."'
+            $sql="update article set titre=".$this->db->escape($data['titre']).",
+            description=".$this->db->escape($data['description']).",contenu=".$this->db->escape($data['contenu']).",photo='".$data['photo']."',categorie='".$data['categorie']."'
              where id='".$data['id']."'";
         }else{
-            $sql="update article set titre='".$data['titre']."',
-            description='".$data['description']."',contenu='".$data['contenu']."',categorie='".$data['categorie']."'
+            $sql="update article set titre=".$this->db->escape($data['titre']).",
+            description=".$this->db->escape($data['description']).",contenu=".$this->db->escape($data['contenu']).",categorie='".$data['categorie']."'
              where id='".$data['id']."'";
         }
         if ($this->db->simpleQuery($sql)) {

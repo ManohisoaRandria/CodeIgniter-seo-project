@@ -14,6 +14,7 @@
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>/public/front/img/logoico.ico">
 	<!-- Site Title -->
 	<title>Magazine - Actualité divers du jour partout dans le monde</title>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
@@ -62,7 +63,7 @@
 						<li><a href="apropos">A propos</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
-				<div class="navbar-right">
+				<!-- <div class="navbar-right">
 
 					<form class="Search" method="post" action="<?php echo base_url(); ?>/home/test">
 						<input type="text" class="form-control Search-box" value="" name="pseudo" id="Search-box" placeholder="Search">
@@ -73,7 +74,7 @@
 							<span class="lnr lnr-cross"></span>
 						</span>
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</header>

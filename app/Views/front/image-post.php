@@ -55,7 +55,7 @@
 						<li><a href="<?php echo base_url(); ?>/apropos">A propos</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
-				<div class="navbar-right">
+				<!-- <div class="navbar-right">
 					<form class="Search">
 						<input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="Search">
 						<label for="Search-box" class="Search-box-label">
@@ -65,7 +65,7 @@
 							<span class="lnr lnr-cross"></span>
 						</span>
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</header>
