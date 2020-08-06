@@ -414,14 +414,7 @@
 				<div class="col-lg-3 col-md-6 single-footer-widget">
 					<h4>Instragram Feed</h4>
 					<ul class="instafeed d-flex flex-wrap">
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i1.jpg" alt="insta1"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i2.jpg" alt="insta2"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i3.jpg" alt="insta3"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i4.jpg" alt="insta4"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i5.jpg" alt="insta5"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i6.jpg" alt="insta6"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i7.jpg" alt="insta7"></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i8.jpg" alt="insta8"></li>
+						<li>Magazine</li>
 					</ul>
 				</div>
 			</div>

@@ -81,7 +81,9 @@
 					<div class="col-lg-12">
 						<div class="hero-nav-area">
 							<h1 class="text-white">Apropos de nous</h1>
-							<h4><p class="text-white link-nav"><a href="#">Home </a> <span class="lnr lnr-arrow-right"></span><a href="#">A propos</a></p></h4>
+							<h4>
+								<p class="text-white link-nav"><a href="#">Home </a> <span class="lnr lnr-arrow-right"></span><a href="#">A propos</a></p>
+							</h4>
 						</div>
 					</div>
 				</div>
@@ -353,14 +355,7 @@
 				<div class="col-lg-3 col-md-6 single-footer-widget">
 					<h4>Instragram Feed</h4>
 					<ul class="instafeed d-flex flex-wrap">
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i1.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i2.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i3.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i4.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i5.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i6.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i7.jpg" alt=""></li>
-						<li><img src="<?php echo base_url(); ?>/public/front/img/i8.jpg" alt=""></li>
+						<li>Magazine</li>
 					</ul>
 				</div>
 			</div>
