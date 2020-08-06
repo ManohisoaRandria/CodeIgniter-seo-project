@@ -7,7 +7,7 @@
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/front/img/fav.png">
 	<!-- Author Meta -->
-	<meta name="author" content="ngam">
+	<meta name="author" content="colorlib">
 	<meta name="robots" content="index, follow, noarchive">
 	<!-- Meta Description -->
 	<meta name="description" content="<?php if(!isset($h1)) {?>Magazine - le 1ér site d'information -Suivez les
@@ -15,7 +15,7 @@
 		  International, Science, Economie, Faits Divers, Santé, Sport, Madagascar... 
 		   <?php }else{ echo "Toute l’actualité sur le sujet ".$h1.". Consultez l’ensemble des articles, reportages, directs, photos et vidéos de la rubrique ";} ?>">
 	<!-- Meta Keyword -->
-	<meta name="keywords" content="Magazine,madagascar,monde,actualité,International, Science, Economie, Faits Divers, Santé, Sport">
+	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>/public/front/img/logoico.ico">
