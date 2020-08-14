@@ -94,7 +94,7 @@
 						<div class="single-post-wrap">
 							<div class="feature-img-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $one[0]->getPhoto() ?>" alt="<?= $one[0]->getTitre() ?>">
+								<img class="img-fluid" src="<?= $one[0]->getPhoto() ?>" alt="<?= $one[0]->getTitre() ?>">
 							</div>
 							<div class="content-wrap">
 								<ul class="tags mt-10">

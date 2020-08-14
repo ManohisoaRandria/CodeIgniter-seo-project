@@ -164,7 +164,7 @@
                             <form action="<?php echo base_url(); ?>/back/insertArticle" enctype="multipart/form-data" method="post" id="forminsert">
                                 <div class="form-group">
                                     <div class="form-single nk-int-st widget-form">
-                                        <textarea name="titre" class="form-control" required placeholder="Titre" form="forminsert"></textarea>
+                                        <textarea name="titre" class="form-control" required  placeholder="Titre" form="forminsert"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-single nk-int-st widget-form">
-                                        <select name="categorie" required>
+                                        <select name="categorie"required >
                                             <?php for ($i = 0; $i < count($categs); $i++) { ?>
                                                 <option value="<?= $categs[$i]->getId() ?>"><?= $categs[$i]->getNom() ?></option>
                                             <?php } ?>
@@ -194,7 +194,7 @@
                                 <div class="contact-btn">
                                     <button type="submit" class="button btn">inserer</button>
                                 </div>
-                                <!-- <input type="hidden" class="form-control" name="base64" id="base" value=""/> -->
+                                <input type="hidden" class="form-control" name="base64" id="base" value=""/>
                             </form>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                             <h2>Update Article</h2>
                         </div>
                         <?php if (!isset($update)) { ?>
-                            <form action="<?php echo base_url(); ?>/back" method="post" id="forminsert">
+                            <form action="<?php echo base_url(); ?>/back" method="post" >
                                 <div class="row">
 
                                     <div class=" col-lg-9">
@@ -268,7 +268,7 @@
                                     <div class="form-group">
                                         <div class="form-single nk-int-st widget-form">
                                             <label for="photo" style="color: red;">*ne pas selectionner une photo si vous ne l'updatez pas</label>
-                                            <input type="file" name="photo"  id="tof"  class="form-control" />
+                                            <input type="file" name="photo"  id="tofupdate"  class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -284,6 +284,7 @@
                                         <button type="submit" class="button btn">inserer</button>
                                     </div>
                                     <input type="hidden" class="form-control" name="id" value="<?= $update[0]->getId() ?>"/>
+                                    <input type="hidden" class="form-control" name="base64" id="baseupdate" value=""/>
                                 </form>
                             </div>
                         <?php } ?>
@@ -430,23 +431,38 @@
         ============================================ -->
     <script>
         const form = document.querySelector('#forminsert');
-        // const base=document.querySelector('#base');
-        // form.addEventListener('submit',(e)=>{
-        //     e.preventDefault();
-        //     Main().then(res=>{
-        //         // base.value=res;
-        //         // console.log(res);
-        //         if(base.value!='')form.submit();
-        //     });
-        // });
+        const formUpdate = document.querySelector('#formupdate');
+        const base=document.querySelector('#base');
+        const baseUpdate=document.querySelector('#baseupdate');
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            Main('tof').then(res=>{
+                base.value=res;
+                // console.log(res);
+                if(base.value!='')form.submit();
+            });
+        });
+        if(formUpdate!=null){
+            formUpdate.addEventListener('submit',(e)=>{
+                e.preventDefault();
+                Main('tofupdate').then(res=>{
+                    baseUpdate.value=res;
+                    // console.log(res);
+                    if(baseUpdate.value!='')formUpdate.submit();
+                }).catch(err=>{
+                    formUpdate.submit();
+                });
+            });
+        }
+        
         const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => resolve(reader.result);
             reader.onerror = error => reject(error);
         });
-        async function Main() {
-            const file = document.querySelector('#tof').files[0];
+        async function Main(id) {
+            const file = document.querySelector('#'+id).files[0];
             return await toBase64(file);
         }
     </script>

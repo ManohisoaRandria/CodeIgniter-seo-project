@@ -35,7 +35,17 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/front/css/jquery-ui.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/front/css/main.css">
 </head>
-
+<style>
+	#saryvolou{
+		min-height: 208px;
+	}
+	@media screen and (min-width: 992px)  and (max-width: 1199px) {
+		#saryvolou{
+			min-height: 170px;
+		}
+	}
+	
+</style>
 <body>
 	<header>
 		<div class="logo-wrap">
@@ -111,7 +121,7 @@
 						<div class="single-top-post">
 							<div class="feature-image-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[0]->getPhoto() ?>" alt="<?= $recent[0]->getTitre() ?>">
+								<img class="img-fluid" id="saryvolou" src="<?= $recent[0]->getPhoto() ?>" alt="<?= $recent[0]->getTitre() ?>">
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
@@ -130,7 +140,7 @@
 						<div class="single-top-post mt-10">
 							<div class="feature-image-thumb relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[1]->getPhoto() ?>" alt="<?= $recent[1]->getTitre() ?>">
+								<img class="img-fluid" id="saryvolou" src="<?= $recent[1]->getPhoto() ?>" alt="<?= $recent[1]->getTitre() ?>">
 							</div>
 							<div class="top-post-details">
 								<ul class="tags">
@@ -173,7 +183,7 @@
 										<div class="col-lg-5 post-left">
 											<div class="feature-img relative">
 												<div class="overlay overlay-bg"></div>
-												<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $recent[$i]->getPhoto() ?>" alt="<?= $recent[$i]->getTitre() ?>">
+												<img class="img-fluid" src="<?= $recent[$i]->getPhoto() ?>" alt="<?= $recent[$i]->getTitre() ?>">
 											</div>
 											<ul class="tags">
 												<li><?= $recent[$i]->getCategorie() ?></li>
@@ -202,7 +212,7 @@
 										<div class="col-lg-5 post-left">
 											<div class="feature-img relative">
 												<div class="overlay overlay-bg"></div>
-												<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $getbcat[$i]->getPhoto() ?>" alt="<?= $getbcat[$i]->getTitre() ?>">
+												<img class="img-fluid" src="<?= $getbcat[$i]->getPhoto() ?>" alt="<?= $getbcat[$i]->getTitre() ?>">
 											</div>
 											<ul class="tags">
 												<li><?= $getbcat[$i]->getCategorie() ?></li>
@@ -239,7 +249,7 @@
 								<div class="feature-post relative">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[0]->getPhoto() ?>" alt="<?= $popular[0]->getTitre() ?>">
+										<img class="img-fluid" src="<?= $popular[0]->getPhoto() ?>" alt="<?= $popular[0]->getTitre() ?>">
 									</div>
 									<div class="details">
 										<ul class="tags">
@@ -262,7 +272,7 @@
 											<div class="feature-img-wrap relative">
 												<div class="feature-img relative">
 													<div class="overlay overlay-bg"></div>
-													<img class="img-fluid" src="<?php echo base_url(); ?>/<?= $popular[$i]->getPhoto() ?>" alt="<?= $popular[$i]->getTitre() ?>">
+													<img class="img-fluid" src="<?= $popular[$i]->getPhoto() ?>" alt="<?= $popular[$i]->getTitre() ?>">
 												</div>
 												<ul class="tags">
 													<li><a href="#"><?= $popular[$i]->getCategorie() ?></a></li>
@@ -334,7 +344,7 @@
 											<?php for ($i = 0; $i < count($mostview); $i++) { ?>
 												<div class="single-post d-flex flex-row">
 													<div class="thumb">
-														<img style="width: 100px;height:80px;" src="<?php echo base_url(); ?>/<?= $mostview[$i]->getPhoto() ?>" alt="<?= $mostview[$i]->getTitre() ?>">
+														<img style="width: 100px;height:80px;" src="<?= $mostview[$i]->getPhoto() ?>" alt="<?= $mostview[$i]->getTitre() ?>">
 													</div>
 													<div class="detail">
 														<a href="article/<?= $mostview[$i]->getTitreUrl() ?>-<?= $mostview[$i]->getId() ?>.html">
