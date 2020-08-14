@@ -2,7 +2,7 @@
 
 ## ETU000776
 
-* Front-Office: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle>
-* Back-Office: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle>
+* Front-Office: <https://magazine-mg.herokuapp.com/>
+* Back-Office: <https://magazine-mg.herokuapp.com/back>
     - login: `back`
     - mdp: `1234`
