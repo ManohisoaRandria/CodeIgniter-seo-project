@@ -1,6 +1,4 @@
-# TP S6 P6 Web design Juillet 2020
-
-## ETU000776
+# Projet SEO avec le framework CodeIgniter 4
 
 * Front-Office: <https://magazine-mg.herokuapp.com/>
 * Back-Office: <https://magazine-mg.herokuapp.com/back>
